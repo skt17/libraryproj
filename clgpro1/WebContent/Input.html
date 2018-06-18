@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script>
+function vform()
+{
+	document.getElementById("1").innerHTML="";
+	document.getElementById("2").innerHTML="";
+	document.getElementById("3").innerHTML="";
+
+var p=document.form.reg.value;
+var branch=document.form.bn.value;
+var n=/\d{3}[1]{3}\d{4}/.exec(p);
+var ps=document.form.pwd.value;
+if(n==null){
+document.getElementById("1").innerHTML="not a valid regno";
+return false;
+}
+else if(branch=="x"){
+	document.getElementById("2").innerHTML="Select a Branch";
+return false;
+}
+else if(ps=="")
+	{
+	document.getElementById("3").innerHTML="Enter a password";
+	return false;
+	
+	}
+
+else{
+	return true;
+}
+
+}
+function p1()
+{
+	var p=document.getElementById("pp");
+	if(p.type==="password")
+		p.type="text";
+	else
+		p.type="password";
+	}
+
+</script>
+
+</head>
+<body>
+
+<form name="form" action="in" onsubmit="return vform()" method="post">
+Enter Registraion no<input type="text" name="reg"><span id="1"></span>
+<br>
+Select Branch:<select name="bn">
+<option selected="selected" disabled="disabled" value="x">Select Branch </option>
+      
+<option value="cse">CSE</option>
+<option value="ele">EE</option>
+<option value="mec">ME</option>
+<option value="civ">CE</option>
+</select><span id="2"></span>
+<br>
+
+Enter password:<input type="password" name="pwd" id="pp"><span id="3"></span>
+<br>
+<input type="checkbox" onclick="p1()">show password
+
+<br>
+<input type="submit" value="Enter">
+<b>NEW USER</b>
+<a href="signup.html">signup</a>
+<br>
+
+</form>
+<b>Forgot Password</b>
+<a href="forgot.html">FORGOT PASSWORD</a>
+</body>
+
+</html>
