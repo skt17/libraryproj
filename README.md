@@ -6,3 +6,7 @@ library management project
   
   =>clgpro2:-
   it is for cilent side by using which student can see their details in their mobile phone..
+  
+  
+  ==>mysql shema:-
+  the 4th one is the sql shema for mysql db...
