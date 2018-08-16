@@ -1,13 +1,26 @@
 package test;
 import java.io.*;
+
 import javax.servlet.*;
+import javax.servlet.http.*;
+
 import java.util.regex.*;
-public class part3 extends GenericServlet{
-	public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException
+public class part3 extends HttpServlet{
+	public void service(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
 	{
 		PrintWriter pw=res.getWriter();
 		res.setContentType("text/html");
 	String rn=info.rn;
+	HttpSession hs=req.getSession();
+HttpSession hs1=req.getSession();
+String reg=(String)hs.getAttribute("reg");
+String pwd=(String)hs1.getAttribute("pwd");
+
+if(!reg.equals("")&& !pwd.equals(""))
+{	
+	pw.println("<html><head><meta name=viewport content=width=device-width, initial-scale=1, shrink-to-fit=no></head>"
+			+ "<body><p>                <a href=out>LOGOUT</a></p></body></html>");
+
 	String loc="G:\\New folder\\"+rn+".txt";
 	File f=new File(loc);
 	BufferedReader br=new BufferedReader(new FileReader(f));
@@ -46,6 +59,12 @@ public class part3 extends GenericServlet{
 	pw.println("</body></html>");
 	
 	br.close();
+	}
+else{
+	pw.println("<html><head><meta name=viewport content=width=device-width, initial-scale=1, shrink-to-fit=no></head><body<br>YOU FIRST LOGIN..<br></body></html>");
+	RequestDispatcher rd=req.getRequestDispatcher("Input.html");
+	rd.include(req,res);
+	}
 	}
 
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Password Change</title>
+<script>
+function chec()
+{
+	var a=document.form.pass.value;
+	var b=document.form.repass.value;
+	if((a=="")||(b==""))
+		{
+		alert("PLZ FILLUP ALL THE FILELDS");
+		return false;
+		}
+else if(a==b)
+	{
+	return true;
+	}else{
+		alert("PASSWORD AND REPASSWORD WON'T MATCH");
+	return false;
+	}
+	}
+</script>
+</head>
+<body>
+<form name="form" action="passchange" onsubmit="return chec()" method="post">
+Enter Password<input type="text" name="pass"><br>
+ReEnter password<input type="text" name="repass">
+<input type="submit" value="OK">
+</form>
+</body>
+</html>

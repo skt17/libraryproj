@@ -21,9 +21,9 @@ public class sign extends GenericServlet{
 	
 	 int rs=ps.executeUpdate();
 	 if(rs==1)
-		 pw.println("sucsssful");
+		 pw.println("<html><head><meta name=viewport content=width=device-width, initial-scale=1, shrink-to-fit=no></head><body>SUCESSFULL<br> <a href=Input.html>PRESS HERE FOR LOGIN</a></body></html>");
 	 else
-		 pw.println("try again");
+		 pw.println("<html><head><meta name=viewport content=width=device-width, initial-scale=1, shrink-to-fit=no></head><body>TRY AGAIN</body></html>");
 	
 	}catch(Exception e){}
 	}

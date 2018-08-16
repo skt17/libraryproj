@@ -1,47 +1,74 @@
 package test;
 import javax.servlet.*;
 
+
+
+import javax.servlet.http.*;
+
+
 import java.sql.*;
 import java.io.*;
-public class part1 extends GenericServlet{
-	public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException
+public class part1 extends HttpServlet{
+	public void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
 	{
 		PrintWriter pw=res.getWriter();
 	res.setContentType("text/html");
 	String reg=req.getParameter("reg");
 	String pwd=req.getParameter("pwd");
+
 	String bn=req.getParameter("bn");
-//	System.out.println(bn);
-	/*for(int i=0;i<3;i++)
-	{
-		bn=bn+reg.charAt(i);
-	}
-	for( int i=3;i<13;i++)
-		rn=rn+reg.charAt(i);*/
+	Connection con=null;
 	try{
-	Connection con=DbCon.getCon();
-	/*Statement st=con.createStatement();
-	ResultSet rs=st.executeQuery("select hint from cse where regd_no='"+reg+"' and password='"+pwd+"'");
-	*/
+	 con=DbCon.getCon();
+//Class.forName("com.mysql.jdbc.Driver");	
+	// con=DriverManager.getConnection("jdbc:mysql://localhost:3306/client","root","");
+
+	//pw.println("xxx"+con);
 	PreparedStatement ps=con.prepareStatement("select hint from "+bn+" where regd_no=? and password=?");
-	//ps.setString(1,bn );
 	ps.setString(1, reg);
 	ps.setString(2, pwd);
 	
 	ResultSet rs=ps.executeQuery();
 	
 	if(rs.next()){
+		HttpSession hs=req.getSession();
+		HttpSession hs1=req.getSession();
+		hs.setAttribute("reg",reg);
+		hs1.setAttribute("pwd",pwd);
+		HttpSession hs2=req.getSession();
+		
+		hs2.setAttribute("bn",bn);
 	RequestDispatcher rd=req.getRequestDispatcher("p2");
 	rd.forward(req,res);
 	}
 	else{
-		RequestDispatcher rd=req.getRequestDispatcher("Input.html");
-		pw.println(" <br><b>your reg no & password won't match");
+		
+		//pw.println("<script language='javascript'> alert('Hi there');</script>");
+		
+		RequestDispatcher rd=req.getRequestDispatcher("error.html");
 		
 		rd.include(req, res);
-		pw.println(" <br><b>your reg no & password won't match");
+		RequestDispatcher rd1=req.getRequestDispatcher("Input.html");
+		
+		rd1.include(req, res);
+
+
+/*pw.println("<html><head>");
+int number=0;
+//the value of number, you can get from resultset or any manipulation.
+pw.println("<script language=javascript");
+pw.println("<br> function say_hello() <br>{ <br>");
+pw.println("alert \'you have got"+number+" messages\'");
+pw.println("}");
+pw.println("</head>");
+pw.println("<body onload=say_hello()");
+pw.println("</body>");
+pw.println("</html>");*/
+
 	}
 	}catch(Exception e){
+		pw.println("yyy"+con);
+		
 	e.printStackTrace();
 	}
 	}

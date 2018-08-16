@@ -40,12 +40,12 @@ public class Part5 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"mec", "cse", "ele", "civ"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "mec", "cse", "ele", "civ" }));
 		comboBox.setBounds(139, 24, 94, 20);
 		contentPane.add(comboBox);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(10, 79, 177, 14);
 		contentPane.add(lblNewLabel);

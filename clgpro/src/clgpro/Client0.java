@@ -25,10 +25,10 @@ public class Client0 {
 	private JTextField textField;
 	private JComboBox comboBox;
 	private JPasswordField passwordField;
-	static String nm="";
-	static String rn="";
-	static String q="";
-	
+	static String nm = "";
+	static String rn = "";
+	static String q = "";
+
 	/**
 	 * Launch the application.
 	 */
@@ -60,85 +60,86 @@ public class Client0 {
 		frame.setBounds(100, 100, 545, 322);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		textField = new JTextField();
 		textField.setBounds(136, 11, 86, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "civ", "cse", "ele", "mec"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "civ", "cse", "ele", "mec" }));
 		comboBox.setBounds(136, 56, 66, 20);
 		frame.getContentPane().add(comboBox);
-		
+
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DataInputStream dis=null;
-				DataOutputStream dout=null;
-				Socket s=null;
-				try{
-					 s=new Socket("localhost",7777);
-					 dis=new DataInputStream(s.getInputStream());
-					 dout=new DataOutputStream(s.getOutputStream());
+				DataInputStream dis = null;
+				DataOutputStream dout = null;
+				Socket s = null;
+				try {
+					s = new Socket("localhost", 7777);
+					dis = new DataInputStream(s.getInputStream());
+					dout = new DataOutputStream(s.getOutputStream());
 					dout.writeUTF("0");
-					rn=textField.getText();
+					rn = textField.getText();
 					dout.writeUTF(rn);
-					nm=String.valueOf(passwordField.getPassword());
+					nm = String.valueOf(passwordField.getPassword());
 					dout.writeUTF(nm);
-					
-					 q=(String)comboBox.getSelectedItem();
+
+					q = (String) comboBox.getSelectedItem();
 					dout.writeUTF(q);
-					
-					int i=Integer.valueOf(dis.readUTF());
-					if(i==1)
-					new Client1();
-					
-				}
-				catch(Exception e){}
-				finally{
-					try{
+
+					int i = Integer.valueOf(dis.readUTF());
+					if (i == 1)
+						new Client1();
+
+				} catch (Exception e) {
+				} finally {
+					try {
 						dis.close();
 						dout.close();
 						s.close();
-					}catch(Exception e){}
-					
+					} catch (Exception e) {
+					}
+
 				}
 			}
 		});
 		btnNewButton.setBounds(40, 168, 86, 23);
 		frame.getContentPane().add(btnNewButton);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(136, 110, 96, 20);
 		frame.getContentPane().add(passwordField);
-		
+
 		JLabel lblNewLabel = new JLabel("REGD_NO.");
 		lblNewLabel.setBounds(23, 14, 66, 14);
 		frame.getContentPane().add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("BRANCH");
 		lblNewLabel_1.setBounds(23, 59, 52, 14);
 		frame.getContentPane().add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD");
 		lblNewLabel_2.setBounds(23, 113, 80, 14);
 		frame.getContentPane().add(lblNewLabel_2);
-		
+
 		JButton btnNewButton_1 = new JButton("Forgot Password?");
 		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new C1();
-				
+
 			}
 		});
 		btnNewButton_1.setBounds(204, 154, 149, 14);
 		frame.getContentPane().add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Sign Up\r\n");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new C2().setVisible(true );;
+				new C2().setVisible(true);
+				;
 			}
 		});
 		btnNewButton_2.setBounds(361, 36, 89, 23);

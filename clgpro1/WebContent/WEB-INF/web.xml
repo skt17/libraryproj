@@ -40,6 +40,23 @@
 <servlet-name>part3</servlet-name>
 <url-pattern>/p3</url-pattern>
 </servlet-mapping>
+<servlet>
+<servlet-name>fb</servlet-name>
+<servlet-class>test.fb</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>fb</servlet-name>
+<url-pattern>/feed</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>logout</servlet-name>
+<servlet-class>test.logout</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>logout</servlet-name>
+<url-pattern>/out</url-pattern>
+</servlet-mapping>
+
 
 <welcome-file-list>
 <welcome-file>Input.html</welcome-file>

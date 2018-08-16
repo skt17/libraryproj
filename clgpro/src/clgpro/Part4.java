@@ -15,9 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
 public class Part4 extends JFrame {
-
 	private JPanel contentPane;
-	public static String s="";
 
 	/**
 	 * Launch the application.
@@ -44,7 +42,7 @@ public class Part4 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Book no.");
 		lblNewLabel.setBounds(10, 104, 46, 14);
 		contentPane.add(lblNewLabel);
@@ -55,40 +53,41 @@ public class Part4 extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setBounds(10, 118, 617, 374);
 		contentPane.add(scrollPane);
-	
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Book Name");
 		lblNewLabel_1.setBounds(161, 104, 86, 14);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Issue dt");
 		lblNewLabel_2.setBounds(428, 104, 54, 14);
 		contentPane.add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Return dt");
 		lblNewLabel_3.setBounds(554, 104, 46, 14);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JButton btnNewButton = new JButton("view");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try{
+				try {
+					
 					textArea.setVisible(true);
-				String st="C:\\Users\\SIKU\\Desktop\\"+s+".txt";
-				java.io.BufferedReader br=new java.io.BufferedReader(new java.io.FileReader(st));
-			String l=br.readLine();
-			while(l!=null){
-				textArea.append(l+"\n");
-				l=br.readLine();
-			}
-			br.close();
-			}catch(Exception e){}
-		
+					String st="G:/New Folder/"+ cld.rno + ".txt";
+					java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(st));
+					String l = br.readLine();
+					while (l != null) {
+						textArea.append(l + "\n");
+						l = br.readLine();
+					}
+					br.close();
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+
 			}
 		});
 		btnNewButton.setBounds(10, 22, 89, 23);
 		contentPane.add(btnNewButton);
-		
-		
+
 	}
 }

@@ -1,3 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/font.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script>
+function vform()
+{
+	document.getElementById("1").innerHTML="";
+	document.getElementById("2").innerHTML="";
+	document.getElementById("3").innerHTML="";
+
+var p=document.form.reg.value;
+var branch=document.form.bn.value;
+var n=/\d{3}[1]{3}\d{4}/.exec(p);
+var ps=document.getElementById("pp").value;
+
+if(n==null){
+alert("not a valid regno");
+return false;
+}
+else if(branch=="x"){
+	alert("Select a Branch");
+return false;
+}
+else if(ps=="")
+	{
+	alert("Enter a password");
+	return false;
+	
+	}
+
+else{
+	return true;
+}
+
+}
+function p1()
+{
+	var p=document.getElementById("pp");
+	if(p.type==="password")
+		p.type="text";
+	else
+		p.type="password";
+	}
+
+(function($){
+	$(document).ready(function(){
+		
+		// Show Password
+		$('#show-password').click(function()
+		{
+			if ($(this).hasClass('fa-eye'))
+			{
+				$('#login-password').attr('type', 'text');
+				$(this).removeClass('fa-eye');
+				$(this).addClass('fa-eye-slash');
+			} else {
+				$('#login-password').attr('type', 'password');
+				$(this).removeClass('fa-eye-slash');
+				$(this).addClass('fa-eye');
+			}
+		})
+		
+		
+	});
+})(jQuery);
+
+</script>
+</head>
+<body>
+<div class="background"></div>
+<div class="login-form-container" id="login-form">
+	<div class="login-form-content">
+		<div class="login-form-header">
+			<div class="logo">
+				<img src="img/user.png"/>
+			</div>
+			<h3>Login Into Your Account</h3>
+		</div>
+		<form name="form" action="in" onsubmit="return vform()" method="post" class="login-form">
+			<div class="input-container">
+				<i class="fa fa-envelope"></i>
+				<input type="text" class="input" name="reg" placeholder="Registration Number"><span id="1"></span>
+			</div>
+			<div class="input-container">
+				<i class="fa fa-paperclip"></i>
+				<select name="bn" class="input2">
+				<option selected="selected" disabled="disabled" value="x">Select Your Branch </option>
+      			<option value="cse">Computer Science & Engineering</option>
+				<option value="ele">Electrical Engineering</option>
+				<option value="mec">Mechanical Engineering</option>
+				<option value="civ">Civil Engineering</option>
+				</select><span id="2"></span>
+			</div>
+			<div class="input-container">
+				<i class="fa fa-lock"></i>
+				<input type="password"  id="pp" name="pwd" class="input" name="password" placeholder="Password"/><span id="3"></span>
+				<i onclick="p1()" id="show-password" class="fa fa-eye"></i>
+			</div>
+			<div class="rememberme-container">
+				<input type="checkbox" name="rememberme" id="rememberme"/>
+				<label for="rememberme" class="rememberme"><span>Remember me</span></label>
+				<a class="forgot-password" href="forgot.html">Forgot Password?</a>
+			</div>
+			<input type="submit" name="login" value="Login" class="button"/>
+			<a href="signup.html" class="register">Register</a>
+		</form>
+</div>
+</div>
+</body>
+</html>
+-->
+<!-- OLD ONE 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,3 +200,4 @@ Enter password:<input type="password" name="pwd" id="pp"><span id="3"></span>
 </body>
 
 </html>
+-->
